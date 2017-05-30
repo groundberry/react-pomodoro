@@ -1,14 +1,12 @@
 import React from 'react';
+import Pomodoro from './Pomodoro';
 import './App.css';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <div className="App-header">
-        <h2>Pomodoro clock</h2>
-      </div>
+      <h1 className="App-header">Pomodoro clock</h1>
+      <Pomodoro />
     </div>
   );
 }
-
-export default App;
