@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Timer from './Timer';
+import { clickTimer } from './actions';
 import './Pomodoro.css';
 
 class Pomodoro extends Component {
@@ -7,14 +9,19 @@ class Pomodoro extends Component {
     this.state = {
       status: 'off',
     };
+
+    this.handleClickTimer = this.handleClickTimer.bind(this);
+  }
+
+  handleClickTimer() {
+    this.setState(clickTimer);
   }
 
   render() {
     return (
       <div className="Pomodoro">
-        <div className="Pomodoro-header">
-          <h2>Start pomodoro</h2>
-        </div>
+        <h2 className="Pomodoro-header">Start pomodoro</h2>
+        <Timer onClick={this.handleClickTimer} />
       </div>
     );
   }
