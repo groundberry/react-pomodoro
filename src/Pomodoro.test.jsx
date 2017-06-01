@@ -1,15 +1,26 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import Pomodoro from './Pomodoro';
 
 describe('<Pomodoro />', () => {
-  it('finds a Pomodoro', () => {
-    const wrapper = shallow(<Pomodoro />);
-    expect(wrapper.find('.Pomodoro').hasClass('Pomodoro')).toEqual(true);
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = mount(<Pomodoro />);
+  });
+
+  it('sets the class name', () => {
+    expect(wrapper.hasClass('Pomodoro')).toBe(true);
   });
 
   it('renders a title', () => {
-    const wrapper = shallow(<h2 className="Pomodoro-header">Start pomodoro</h2>);
-    expect(wrapper.text()).toBe('Start pomodoro');
+    expect(wrapper.find('.Pomodoro-header').text()).toBe('Start pomodoro');
+  });
+
+  describe('when clicking on <Timer />', () => {
+    it('sets the state to on', () => {
+      wrapper.find('.Timer').simulate('click');
+      expect(wrapper.state('status')).toBe('on');
+    });
   });
 });
