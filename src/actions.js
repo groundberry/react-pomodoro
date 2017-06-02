@@ -31,11 +31,7 @@ export function tick(prevState) {
 }
 
 export function resetTimer() {
-  const { timeLeft } = this.state;
-
-  if (timeLeft !== 1500) {
-    this.setState({
-      timeLeft: 1500,
-    });
-  }
+  return {
+    timeLeft: 1500,
+  };
 }

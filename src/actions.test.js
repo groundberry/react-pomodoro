@@ -61,4 +61,14 @@ describe('actions', () => {
       expect(tick(prevState)).toEqual(newState);
     });
   });
+
+  describe('resetTimer', () => {
+    it('resets the timer', () => {
+      const newState = {
+        timeLeft: 1500,
+      };
+
+      expect(resetTimer()).toEqual(newState);
+    });
+  });
 });

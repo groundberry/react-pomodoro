@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Timer from './Timer';
-import { tick } from './actions';
+import Button from './Button';
+import { tick, resetTimer } from './actions';
 import './Pomodoro.css';
 
 const defaultWorkLength = 25 * 60;
@@ -15,6 +16,7 @@ class Pomodoro extends Component {
     };
 
     this.handleClickTimer = this.handleClickTimer.bind(this);
+    this.handleClickResetTimer = this.handleClickResetTimer.bind(this);
   }
 
   handleClickTimer() {
@@ -37,6 +39,10 @@ class Pomodoro extends Component {
     }
   }
 
+  handleClickResetTimer() {
+    this.setState(resetTimer);
+  }
+
   render() {
     return (
       <div className="Pomodoro">
@@ -46,6 +52,11 @@ class Pomodoro extends Component {
           onClick={this.handleClickTimer}
         />
         <h2 className="Pomodoro-mode">{this.state.mode}</h2>
+        <Button
+          label="Reset"
+          className="Pomodoro-resetButton"
+          onClick={this.handleClickResetTimer}
+        />
       </div>
     );
   }
