@@ -9,6 +9,7 @@ class Pomodoro extends Component {
   constructor() {
     super();
     this.state = {
+      mode: 'stop',
       status: 'off',
       timeLeft: defaultWorkLength,
     };
@@ -40,7 +41,11 @@ class Pomodoro extends Component {
     return (
       <div className="Pomodoro">
         <h2 className="Pomodoro-header">Start pomodoro</h2>
-        <Timer timeLeft={this.state.timeLeft} onClick={this.handleClickTimer} />
+        <Timer
+          timeLeft={this.state.timeLeft}
+          onClick={this.handleClickTimer}
+        />
+        <h2 className="Pomodoro-mode">{this.state.mode}</h2>
       </div>
     );
   }

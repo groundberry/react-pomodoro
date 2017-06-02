@@ -5,3 +5,7 @@
 .Pomodoro-header {
   color: #000;
 }
+
+.Pomodoro-mode {
+  text-transform: capitalize;
+}
