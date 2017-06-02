@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import Timer from './Timer';
 import Button from './Button';
-import { tick, resetTimer } from './actions';
+import {
+  tick,
+  resetTimer,
+  clickDecrease,
+  clickIncrease,
+} from './actions';
 import './Pomodoro.css';
 
 const defaultWorkLength = 25 * 60;
@@ -17,6 +22,8 @@ class Pomodoro extends Component {
 
     this.handleClickTimer = this.handleClickTimer.bind(this);
     this.handleClickResetTimer = this.handleClickResetTimer.bind(this);
+    this.handleClickDecrease = this.handleClickDecrease.bind(this);
+    this.handleClickIncrease = this.handleClickIncrease.bind(this);
   }
 
   handleClickTimer() {
@@ -43,6 +50,14 @@ class Pomodoro extends Component {
     this.setState(resetTimer);
   }
 
+  handleClickDecrease() {
+    this.setState(clickDecrease);
+  }
+
+  handleClickIncrease() {
+    this.setState(clickIncrease);
+  }
+
   render() {
     return (
       <div className="Pomodoro">
@@ -51,12 +66,25 @@ class Pomodoro extends Component {
           timeLeft={this.state.timeLeft}
           onClick={this.handleClickTimer}
         />
-        <h2 className="Pomodoro-mode">{this.state.mode}</h2>
+        <h2 className="Pomodoro-mode">It is {this.state.mode} time</h2>
         <Button
           label="Reset"
           className="Pomodoro-resetButton"
           onClick={this.handleClickResetTimer}
         />
+        <div className="Pomodoro-customise">
+          <Button
+            label="-"
+            className="Pomodoro-decreaseWorkButton"
+            onClick={this.handleClickDecrease}
+          />
+          <h2 className="Pomodoro-customiseWork">Increase pomodoro</h2>
+          <Button
+            label="+"
+            className="Pomodoro-increaseWorkButton"
+            onClick={this.handleClickIncrease}
+          />
+        </div>
       </div>
     );
   }

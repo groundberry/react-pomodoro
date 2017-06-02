@@ -1,6 +1,8 @@
 import {
   tick,
   resetTimer,
+  clickDecrease,
+  clickIncrease,
 } from './actions';
 
 describe('actions', () => {
@@ -69,6 +71,34 @@ describe('actions', () => {
       };
 
       expect(resetTimer()).toEqual(newState);
+    });
+  });
+
+  describe('clickDecrease', () => {
+    it('decreases the default timer by 60 seconds', () => {
+      const prevState = {
+        timeLeft: 120,
+      };
+
+      const newState = {
+        timeLeft: 60,
+      };
+
+      expect(clickDecrease(prevState)).toEqual(newState);
+    });
+  });
+
+  describe('clickIncrease', () => {
+    it('increases the default timer by 60 seconds', () => {
+      const prevState = {
+        timeLeft: 60,
+      };
+
+      const newState = {
+        timeLeft: 120,
+      };
+
+      expect(clickIncrease(prevState)).toEqual(newState);
     });
   });
 });

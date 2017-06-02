@@ -2,10 +2,6 @@
   color: #000;
 }
 
-.Pomodoro-header {
-  color: #000;
-}
-
-.Pomodoro-mode {
-  text-transform: capitalize;
+.Pomodoro-customiseWork {
+  margin: 10px;
 }

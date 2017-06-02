@@ -35,3 +35,20 @@ export function resetTimer() {
     timeLeft: 1500,
   };
 }
+
+export function clickDecrease(prevState) {
+  const { timeLeft } = prevState;
+
+  return {
+    timeLeft: timeLeft - 60,
+  };
+}
+
+
+export function clickIncrease(prevState) {
+  const { timeLeft } = prevState;
+
+  return {
+    timeLeft: timeLeft + 60,
+  };
+}
