@@ -13,10 +13,6 @@ describe('<Pomodoro />', () => {
     expect(wrapper.hasClass('Pomodoro')).toBe(true);
   });
 
-  it('renders a title', () => {
-    expect(wrapper.find('.Pomodoro-header').text()).toBe('Start pomodoro');
-  });
-
   describe('when clicking on <Timer />', () => {
     it('sets the state to on', () => {
       wrapper.find('.Timer').simulate('click');

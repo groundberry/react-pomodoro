@@ -61,7 +61,6 @@ class Pomodoro extends Component {
   render() {
     return (
       <div className="Pomodoro">
-        <h2 className="Pomodoro-header">Start pomodoro</h2>
         <Timer
           timeLeft={this.state.timeLeft}
           onClick={this.handleClickTimer}
