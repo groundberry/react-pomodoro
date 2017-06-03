@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Timer from './Timer';
+import Time from './Time';
 
 describe('<Timer />', () => {
   let wrapper;
@@ -12,11 +13,11 @@ describe('<Timer />', () => {
   });
 
   it('sets the class name', () => {
-    expect(wrapper.find('.Timer')).toHaveLength(1);
+    expect(wrapper.hasClass('Timer')).toBe(true);
   });
 
-  it('renders minutes and seconds', () => {
-    expect(wrapper.text()).toBe('10:01');
+  it('renders the time', () => {
+    expect(wrapper.contains(<Time time={601} />)).toBe(true);
   });
 
   it('invokes the callback when clicked', () => {

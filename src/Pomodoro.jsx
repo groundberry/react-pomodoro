@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Timer from './Timer';
+import Time from './Time';
 import Button from './Button';
 import {
   tick,
@@ -100,7 +101,10 @@ class Pomodoro extends Component {
             className="Pomodoro-decreaseWorkButton"
             onClick={this.handleClickDecreaseWorkTime}
           />
-          <h2 className="Pomodoro-customiseWork">Session time: {workTime / 60}</h2>
+          <h2 className="Pomodoro-customiseWork">
+            Session time:{' '}
+            <Time time={workTime} />
+          </h2>
           <Button
             label="+"
             className="Pomodoro-increaseWorkButton"
@@ -113,7 +117,10 @@ class Pomodoro extends Component {
             className="Pomodoro-decreaseWorkButton"
             onClick={this.handleClickDecreaseBreakTime}
           />
-          <h2 className="Pomodoro-customiseWork">Break time: {breakTime / 60}</h2>
+          <h2 className="Pomodoro-customiseWork">
+            Break time:{' '}
+            <Time time={breakTime} />
+          </h2>
           <Button
             label="+"
             className="Pomodoro-increaseWorkButton"
