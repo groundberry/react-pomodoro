@@ -1,8 +1,10 @@
 import {
   tick,
   resetTimer,
-  clickDecrease,
-  clickIncrease,
+  clickDecreaseWorkTime,
+  clickIncreaseWorkTime,
+  clickDecreaseBreakTime,
+  clickIncreaseBreakTime,
 } from './actions';
 
 describe('actions', () => {
@@ -19,44 +21,30 @@ describe('actions', () => {
       expect(tick(prevState)).toEqual(newState);
     });
 
-    it('changes the mode from "stop" to "work" when clicking timer button', () => {
+    it('changes the status from "work" to "break" when the work time ends', () => {
       const prevState = {
-        mode: 'stop',
-        timeLeft: 1500,
-      };
-
-      const newState = {
-        mode: 'work',
-        timeLeft: 1500,
-      };
-
-      expect(tick(prevState)).toEqual(newState);
-    });
-
-    it('changes the mode from "work" to "break" when the work time ends', () => {
-      const prevState = {
-        mode: 'work',
+        status: 'work',
+        breakTime: 300,
         timeLeft: 0,
       };
 
       const newState = {
-        mode: 'break',
+        status: 'break',
         timeLeft: 300,
       };
 
       expect(tick(prevState)).toEqual(newState);
     });
 
-    it('changes the mode from "break" to "stop" when the break time ends', () => {
+    it('changes the status from "break" to "stoppedWork" when the break time ends', () => {
       const prevState = {
-        mode: 'break',
-        status: 'on',
+        status: 'break',
+        workTime: 1500,
         timeLeft: 0,
       };
 
       const newState = {
-        mode: 'stop',
-        status: 'off',
+        status: 'stoppedWork',
         timeLeft: 1500,
       };
 
@@ -66,39 +54,72 @@ describe('actions', () => {
 
   describe('resetTimer', () => {
     it('resets the timer', () => {
+      const prevState = {
+        workTime: 1500,
+        timeLeft: 250,
+      };
+
       const newState = {
         timeLeft: 1500,
       };
 
-      expect(resetTimer()).toEqual(newState);
+      expect(resetTimer(prevState)).toEqual(newState);
     });
   });
 
-  describe('clickDecrease', () => {
-    it('decreases the default timer by 60 seconds', () => {
+  describe('clickDecreaseWorkTime', () => {
+    it('decreases the work time by 60 seconds', () => {
       const prevState = {
-        timeLeft: 120,
+        workTime: 120,
       };
 
       const newState = {
-        timeLeft: 60,
+        workTime: 60,
       };
 
-      expect(clickDecrease(prevState)).toEqual(newState);
+      expect(clickDecreaseWorkTime(prevState)).toEqual(newState);
     });
   });
 
-  describe('clickIncrease', () => {
-    it('increases the default timer by 60 seconds', () => {
+  describe('clickIncreaseWorkTime', () => {
+    it('increases the work time by 60 seconds', () => {
       const prevState = {
-        timeLeft: 60,
+        workTime: 60,
       };
 
       const newState = {
-        timeLeft: 120,
+        workTime: 120,
       };
 
-      expect(clickIncrease(prevState)).toEqual(newState);
+      expect(clickIncreaseWorkTime(prevState)).toEqual(newState);
+    });
+  });
+
+  describe('clickDecreaseBreakTime', () => {
+    it('decreases the break time by 60 seconds', () => {
+      const prevState = {
+        breakTime: 120,
+      };
+
+      const newState = {
+        breakTime: 60,
+      };
+
+      expect(clickDecreaseBreakTime(prevState)).toEqual(newState);
+    });
+  });
+
+  describe('clickIncreaseBreakTime', () => {
+    it('increases the break time by 60 seconds', () => {
+      const prevState = {
+        breakTime: 60,
+      };
+
+      const newState = {
+        breakTime: 120,
+      };
+
+      expect(clickIncreaseBreakTime(prevState)).toEqual(newState);
     });
   });
 });

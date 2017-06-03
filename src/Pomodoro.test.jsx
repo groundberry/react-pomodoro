@@ -13,10 +13,49 @@ describe('<Pomodoro />', () => {
     expect(wrapper.hasClass('Pomodoro')).toBe(true);
   });
 
-  describe('when clicking on <Timer />', () => {
-    it('sets the state to on', () => {
-      wrapper.find('.Timer').simulate('click');
-      expect(wrapper.state('status')).toBe('on');
+  describe('when we click on <Timer />', () => {
+    describe('when we had stopped working', () => {
+      beforeEach(() => {
+        wrapper.setState({ status: 'stoppedWork' });
+      });
+
+      it('sets the status to work', () => {
+        wrapper.find('.Timer').simulate('click');
+        expect(wrapper.state('status')).toBe('work');
+      });
+    });
+
+    describe('when we had stopped resting', () => {
+      beforeEach(() => {
+        wrapper.setState({ status: 'stoppedBreak' });
+      });
+
+      it('sets the status to break', () => {
+        wrapper.find('.Timer').simulate('click');
+        expect(wrapper.state('status')).toBe('break');
+      });
+    });
+
+    describe('when we were working', () => {
+      beforeEach(() => {
+        wrapper.setState({ status: 'work' });
+      });
+
+      it('sets the status to stoppedWork', () => {
+        wrapper.find('.Timer').simulate('click');
+        expect(wrapper.state('status')).toBe('stoppedWork');
+      });
+    });
+
+    describe('when we were resting', () => {
+      beforeEach(() => {
+        wrapper.setState({ status: 'break' });
+      });
+
+      it('sets the status to stoppedBreak', () => {
+        wrapper.find('.Timer').simulate('click');
+        expect(wrapper.state('status')).toBe('stoppedBreak');
+      });
     });
   });
 });

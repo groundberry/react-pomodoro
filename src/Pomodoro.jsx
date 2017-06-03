@@ -4,45 +4,58 @@ import Button from './Button';
 import {
   tick,
   resetTimer,
-  clickDecrease,
-  clickIncrease,
+  clickDecreaseWorkTime,
+  clickIncreaseWorkTime,
+  clickDecreaseBreakTime,
+  clickIncreaseBreakTime,
 } from './actions';
 import './Pomodoro.css';
 
-const defaultWorkLength = 25 * 60;
+const defaultWorkTime = 25 * 60;
+const defaultBreakTime = 5 * 60;
 
 class Pomodoro extends Component {
   constructor() {
     super();
+
     this.state = {
-      mode: 'stop',
-      status: 'off',
-      timeLeft: defaultWorkLength,
+      status: 'stoppedWork',
+      workTime: defaultWorkTime,
+      breakTime: defaultBreakTime,
+      timeLeft: defaultWorkTime,
     };
 
     this.handleClickTimer = this.handleClickTimer.bind(this);
     this.handleClickResetTimer = this.handleClickResetTimer.bind(this);
-    this.handleClickDecrease = this.handleClickDecrease.bind(this);
-    this.handleClickIncrease = this.handleClickIncrease.bind(this);
+    this.handleClickDecreaseWorkTime = this.handleClickDecreaseWorkTime.bind(this);
+    this.handleClickIncreaseWorkTime = this.handleClickIncreaseWorkTime.bind(this);
+    this.handleClickDecreaseBreakTime = this.handleClickDecreaseBreakTime.bind(this);
+    this.handleClickIncreaseBreakTime = this.handleClickIncreaseBreakTime.bind(this);
+
+    setInterval(() => {
+      this.setState(tick);
+    }, 1000);
   }
 
   handleClickTimer() {
     const { status } = this.state;
 
-    if (status === 'off') {
+    if (status === 'work') {
       this.setState({
-        status: 'on',
+        status: 'stoppedWork',
       });
-
-      this.interval = setInterval(() => {
-        this.setState(tick);
-      }, 1000);
-    } else if (status === 'on') {
+    } else if (status === 'stoppedWork') {
       this.setState({
-        status: 'off',
+        status: 'work',
       });
-
-      clearInterval(this.interval);
+    } else if (status === 'break') {
+      this.setState({
+        status: 'stoppedBreak',
+      });
+    } else if (status === 'stoppedBreak') {
+      this.setState({
+        status: 'break',
+      });
     }
   }
 
@@ -50,22 +63,32 @@ class Pomodoro extends Component {
     this.setState(resetTimer);
   }
 
-  handleClickDecrease() {
-    this.setState(clickDecrease);
+  handleClickDecreaseWorkTime() {
+    this.setState(clickDecreaseWorkTime);
   }
 
-  handleClickIncrease() {
-    this.setState(clickIncrease);
+  handleClickIncreaseWorkTime() {
+    this.setState(clickIncreaseWorkTime);
+  }
+
+  handleClickDecreaseBreakTime() {
+    this.setState(clickDecreaseBreakTime);
+  }
+
+  handleClickIncreaseBreakTime() {
+    this.setState(clickIncreaseBreakTime);
   }
 
   render() {
+    const { status, workTime, breakTime, timeLeft } = this.state;
+
     return (
       <div className="Pomodoro">
         <Timer
-          timeLeft={this.state.timeLeft}
+          timeLeft={timeLeft}
           onClick={this.handleClickTimer}
         />
-        <h2 className="Pomodoro-mode">It is {this.state.mode} time</h2>
+        <h2 className="Pomodoro-mode">It is {status} time</h2>
         <Button
           label="Reset"
           className="Pomodoro-resetButton"
@@ -75,13 +98,26 @@ class Pomodoro extends Component {
           <Button
             label="-"
             className="Pomodoro-decreaseWorkButton"
-            onClick={this.handleClickDecrease}
+            onClick={this.handleClickDecreaseWorkTime}
           />
-          <h2 className="Pomodoro-customiseWork">Increase pomodoro</h2>
+          <h2 className="Pomodoro-customiseWork">Session time: {workTime / 60}</h2>
           <Button
             label="+"
             className="Pomodoro-increaseWorkButton"
-            onClick={this.handleClickIncrease}
+            onClick={this.handleClickIncreaseWorkTime}
+          />
+        </div>
+        <div className="Pomodoro-customise">
+          <Button
+            label="-"
+            className="Pomodoro-decreaseWorkButton"
+            onClick={this.handleClickDecreaseBreakTime}
+          />
+          <h2 className="Pomodoro-customiseWork">Break time: {breakTime / 60}</h2>
+          <Button
+            label="+"
+            className="Pomodoro-increaseWorkButton"
+            onClick={this.handleClickIncreaseBreakTime}
           />
         </div>
       </div>

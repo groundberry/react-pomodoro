@@ -1,27 +1,21 @@
-/* eslint-disable  import/prefer-default-export */
-
 export function tick(prevState) {
-  const { mode, timeLeft } = prevState;
+  const { status, workTime, breakTime, timeLeft } = prevState;
 
-  if (mode === 'stop' && timeLeft === 1500) {
+  if (status === 'stoppedWork' || status === 'stoppedBreak') {
+    return {};
+  }
+
+  if (status === 'work' && timeLeft === 0) {
     return {
-      mode: 'work',
-      timeLeft: 1500,
+      status: 'break',
+      timeLeft: breakTime,
     };
   }
 
-  if (mode === 'work' && timeLeft === 0) {
+  if (status === 'break' && timeLeft === 0) {
     return {
-      mode: 'break',
-      timeLeft: 300,
-    };
-  }
-
-  if (mode === 'break' && timeLeft === 0) {
-    return {
-      mode: 'stop',
-      status: 'off',
-      timeLeft: 1500,
+      status: 'stoppedWork',
+      timeLeft: workTime,
     };
   }
 
@@ -30,25 +24,44 @@ export function tick(prevState) {
   };
 }
 
-export function resetTimer() {
+export function resetTimer(prevState) {
+  const { workTime } = prevState;
+
   return {
-    timeLeft: 1500,
+    timeLeft: workTime,
   };
 }
 
-export function clickDecrease(prevState) {
-  const { timeLeft } = prevState;
+export function clickDecreaseWorkTime(prevState) {
+  const { workTime } = prevState;
 
   return {
-    timeLeft: timeLeft - 60,
+    workTime: workTime - 60,
   };
 }
 
 
-export function clickIncrease(prevState) {
-  const { timeLeft } = prevState;
+export function clickIncreaseWorkTime(prevState) {
+  const { workTime } = prevState;
 
   return {
-    timeLeft: timeLeft + 60,
+    workTime: workTime + 60,
+  };
+}
+
+export function clickDecreaseBreakTime(prevState) {
+  const { breakTime } = prevState;
+
+  return {
+    breakTime: breakTime - 60,
+  };
+}
+
+
+export function clickIncreaseBreakTime(prevState) {
+  const { breakTime } = prevState;
+
+  return {
+    breakTime: breakTime + 60,
   };
 }
