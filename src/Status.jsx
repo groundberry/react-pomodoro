@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Status.css';
 
 export default function Status(props) {
   const { status } = props;
