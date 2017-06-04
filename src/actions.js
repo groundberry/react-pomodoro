@@ -24,19 +24,12 @@ export function tick(prevState) {
   };
 }
 
-export function resetTimer(prevState) {
-  const { workTime } = prevState;
-
-  return {
-    timeLeft: workTime,
-  };
-}
-
 export function clickDecreaseWorkTime(prevState) {
   const { workTime } = prevState;
 
   return {
     workTime: workTime - 60,
+    timeLeft: workTime - 60,
   };
 }
 
@@ -46,6 +39,7 @@ export function clickIncreaseWorkTime(prevState) {
 
   return {
     workTime: workTime + 60,
+    timeLeft: workTime + 60,
   };
 }
 

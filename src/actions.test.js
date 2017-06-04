@@ -1,6 +1,5 @@
 import {
   tick,
-  resetTimer,
   clickDecreaseWorkTime,
   clickIncreaseWorkTime,
   clickDecreaseBreakTime,
@@ -52,29 +51,16 @@ describe('actions', () => {
     });
   });
 
-  describe('resetTimer', () => {
-    it('resets the timer', () => {
-      const prevState = {
-        workTime: 1500,
-        timeLeft: 250,
-      };
-
-      const newState = {
-        timeLeft: 1500,
-      };
-
-      expect(resetTimer(prevState)).toEqual(newState);
-    });
-  });
-
   describe('clickDecreaseWorkTime', () => {
     it('decreases the work time by 60 seconds', () => {
       const prevState = {
         workTime: 120,
+        timeLeft: 120,
       };
 
       const newState = {
         workTime: 60,
+        timeLeft: 60,
       };
 
       expect(clickDecreaseWorkTime(prevState)).toEqual(newState);
@@ -85,10 +71,12 @@ describe('actions', () => {
     it('increases the work time by 60 seconds', () => {
       const prevState = {
         workTime: 60,
+        timeLeft: 60,
       };
 
       const newState = {
         workTime: 120,
+        timeLeft: 120,
       };
 
       expect(clickIncreaseWorkTime(prevState)).toEqual(newState);

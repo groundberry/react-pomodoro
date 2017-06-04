@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import ClickableTimer from './ClickableTimer';
-import Button from './Button';
 import Status from './Status';
 import EditableTimer from './EditableTimer';
 
 import {
   tick,
-  resetTimer,
   clickDecreaseWorkTime,
   clickIncreaseWorkTime,
   clickDecreaseBreakTime,
@@ -29,7 +27,6 @@ class Pomodoro extends Component {
     };
 
     this.handleClickTimer = this.handleClickTimer.bind(this);
-    this.handleClickResetTimer = this.handleClickResetTimer.bind(this);
     this.handleClickDecreaseWorkTime = this.handleClickDecreaseWorkTime.bind(this);
     this.handleClickIncreaseWorkTime = this.handleClickIncreaseWorkTime.bind(this);
     this.handleClickDecreaseBreakTime = this.handleClickDecreaseBreakTime.bind(this);
@@ -62,10 +59,6 @@ class Pomodoro extends Component {
     }
   }
 
-  handleClickResetTimer() {
-    this.setState(resetTimer);
-  }
-
   handleClickDecreaseWorkTime() {
     this.setState(clickDecreaseWorkTime);
   }
@@ -92,11 +85,6 @@ class Pomodoro extends Component {
           onClick={this.handleClickTimer}
         />
         <Status status={status} />
-        <Button
-          label="Reset"
-          className="Pomodoro-resetButton"
-          onClick={this.handleClickResetTimer}
-        />
         <div className="Pomodoro-customise">
           <EditableTimer
             label="Session length"
