@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Timer from './Timer';
-import Time from './Time';
 import Button from './Button';
+import EditableTimer from './EditableTimer';
+
 import {
   tick,
   resetTimer,
@@ -96,35 +97,17 @@ class Pomodoro extends Component {
           onClick={this.handleClickResetTimer}
         />
         <div className="Pomodoro-customise">
-          <Button
-            label="-"
-            className="Pomodoro-decreaseWorkButton"
-            onClick={this.handleClickDecreaseWorkTime}
+          <EditableTimer
+            label="Session length"
+            time={workTime}
+            onClickDecrease={this.handleClickDecreaseWorkTime}
+            onClickIncrease={this.handleClickIncreaseWorkTime}
           />
-          <h2 className="Pomodoro-customiseWork">
-            Session time:{' '}
-            <Time time={workTime} />
-          </h2>
-          <Button
-            label="+"
-            className="Pomodoro-increaseWorkButton"
-            onClick={this.handleClickIncreaseWorkTime}
-          />
-        </div>
-        <div className="Pomodoro-customise">
-          <Button
-            label="-"
-            className="Pomodoro-decreaseWorkButton"
-            onClick={this.handleClickDecreaseBreakTime}
-          />
-          <h2 className="Pomodoro-customiseWork">
-            Break time:{' '}
-            <Time time={breakTime} />
-          </h2>
-          <Button
-            label="+"
-            className="Pomodoro-increaseWorkButton"
-            onClick={this.handleClickIncreaseBreakTime}
+          <EditableTimer
+            label="Break length"
+            time={breakTime}
+            onClickDecrease={this.handleClickDecreaseBreakTime}
+            onClickIncrease={this.handleClickIncreaseBreakTime}
           />
         </div>
       </div>
