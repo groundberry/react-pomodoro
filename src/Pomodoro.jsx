@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Timer from './Timer';
+import ClickableTimer from './ClickableTimer';
 import Button from './Button';
 import Status from './Status';
 import EditableTimer from './EditableTimer';
@@ -87,7 +87,7 @@ class Pomodoro extends Component {
 
     return (
       <div className="Pomodoro">
-        <Timer
+        <ClickableTimer
           timeLeft={timeLeft}
           onClick={this.handleClickTimer}
         />

@@ -20,7 +20,7 @@ describe('<Pomodoro />', () => {
       });
 
       it('sets the status to work', () => {
-        wrapper.find('.Timer').simulate('click');
+        wrapper.find('.ClickableTimer').simulate('click');
         expect(wrapper.state('status')).toBe('work');
       });
     });
@@ -31,7 +31,7 @@ describe('<Pomodoro />', () => {
       });
 
       it('sets the status to break', () => {
-        wrapper.find('.Timer').simulate('click');
+        wrapper.find('.ClickableTimer').simulate('click');
         expect(wrapper.state('status')).toBe('break');
       });
     });
@@ -42,7 +42,7 @@ describe('<Pomodoro />', () => {
       });
 
       it('sets the status to stoppedWork', () => {
-        wrapper.find('.Timer').simulate('click');
+        wrapper.find('.ClickableTimer').simulate('click');
         expect(wrapper.state('status')).toBe('stoppedWork');
       });
     });
@@ -53,7 +53,7 @@ describe('<Pomodoro />', () => {
       });
 
       it('sets the status to stoppedBreak', () => {
-        wrapper.find('.Timer').simulate('click');
+        wrapper.find('.ClickableTimer').simulate('click');
         expect(wrapper.state('status')).toBe('stoppedBreak');
       });
     });

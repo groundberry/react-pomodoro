@@ -1,19 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Timer from './Timer';
+import ClickableTimer from './ClickableTimer';
 import Time from './Time';
 
-describe('<Timer />', () => {
+describe('<ClickableTimer />', () => {
   let wrapper;
   let spy;
 
   beforeEach(() => {
     spy = jest.fn();
-    wrapper = shallow(<Timer timeLeft={601} onClick={spy} />);
+    wrapper = shallow(<ClickableTimer timeLeft={601} onClick={spy} />);
   });
 
   it('sets the class name', () => {
-    expect(wrapper.hasClass('Timer')).toBe(true);
+    expect(wrapper.hasClass('ClickableTimer')).toBe(true);
   });
 
   it('renders the time', () => {

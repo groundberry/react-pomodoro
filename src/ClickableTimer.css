@@ -1,4 +1,4 @@
-.Timer {
+.ClickableTimer {
   background-color: red;
   border-color: #000;
   border-radius: 100%;
@@ -10,6 +10,6 @@
   width: 200px;
 }
 
-.Timer:hover {
+.ClickableTimer:hover {
   background-color: green;
 }

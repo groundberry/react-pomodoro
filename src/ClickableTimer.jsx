@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Time from './Time';
-import './Timer.css';
+import './ClickableTimer.css';
 
-export default function Timer(props) {
+export default function ClickableTimer(props) {
   return (
-    <button className="Timer" onClick={props.onClick}>
+    <button className="ClickableTimer" onClick={props.onClick}>
       <Time time={props.timeLeft} />
     </button>
   );
 }
 
-Timer.propTypes = {
+ClickableTimer.propTypes = {
   timeLeft: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
 };
