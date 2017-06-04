@@ -1,3 +1,5 @@
+const ring = new Audio('ring.mp3');
+
 export function tick(prevState) {
   const { status, workTime, breakTime, timeLeft } = prevState;
 
@@ -6,6 +8,8 @@ export function tick(prevState) {
   }
 
   if (status === 'work' && timeLeft === 0) {
+    ring.play();
+
     return {
       status: 'break',
       timeLeft: breakTime,
@@ -13,6 +17,8 @@ export function tick(prevState) {
   }
 
   if (status === 'break' && timeLeft === 0) {
+    ring.play();
+
     return {
       status: 'stoppedWork',
       timeLeft: workTime,
