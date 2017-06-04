@@ -7,7 +7,7 @@ export default function Status(props) {
 
   if (status === 'work') {
     return (
-      <h2 className="Status">It is time to work</h2>
+      <h2 className="Status">{"It's time to work!"}</h2>
     );
   }
 
@@ -19,7 +19,7 @@ export default function Status(props) {
 
   if (status === 'break') {
     return (
-      <h2 className="Status">Time for a break!</h2>
+      <h2 className="Status">{"It's time for a break!"}</h2>
     );
   }
 

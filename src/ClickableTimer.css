@@ -21,6 +21,7 @@
   border-style: none;
   color: #000;
   cursor: pointer;
+  font-family: inherit;
   font-size: 2em;
   height: 200px;
   position: relative;
@@ -29,7 +30,7 @@
 
 .ClickableTimer-tomato::before,
 .ClickableTimer-tomato::after {
-  background-color: #bd2222;
+  background-color: #cd4242;
   border-radius: 100%;
   content: '';
   height: 200px;
@@ -41,7 +42,7 @@
 
 .ClickableTimer-tomato:hover::before,
 .ClickableTimer-tomato:hover::after {
-  background-color: #ad0202;
+  background-color: #bd2222;
 }
 
 .ClickableTimer-tomato::before {

@@ -7,20 +7,20 @@ import './EditableTimer.css';
 export default function EditableTimer(props) {
   return (
     <div className="EditableTimer">
-      <div className="EditableTimer-customise">
-        <Button
-          label="-"
-          onClick={props.onClickDecrease}
-        />
-        <h2>
-          {props.label}
-          <Time time={props.time} />
-        </h2>
-        <Button
-          label="+"
-          onClick={props.onClickIncrease}
-        />
-      </div>
+      <h2 className="EditableTimer-header">
+        {props.label}
+      </h2>
+      <Button
+        label="-"
+        onClick={props.onClickDecrease}
+      />
+      <span className="EditableTimer-time">
+        <Time time={props.time} />
+      </span>
+      <Button
+        label="+"
+        onClick={props.onClickIncrease}
+      />
     </div>
   );
 }
