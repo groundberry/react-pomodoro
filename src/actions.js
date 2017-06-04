@@ -27,6 +27,10 @@ export function tick(prevState) {
 export function clickDecreaseWorkTime(prevState) {
   const { workTime } = prevState;
 
+  if (workTime <= 60) {
+    return {};
+  }
+
   return {
     workTime: workTime - 60,
     timeLeft: workTime - 60,
@@ -45,6 +49,10 @@ export function clickIncreaseWorkTime(prevState) {
 
 export function clickDecreaseBreakTime(prevState) {
   const { breakTime } = prevState;
+
+  if (breakTime <= 60) {
+    return {};
+  }
 
   return {
     breakTime: breakTime - 60,

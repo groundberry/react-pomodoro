@@ -65,6 +65,18 @@ describe('actions', () => {
 
       expect(clickDecreaseWorkTime(prevState)).toEqual(newState);
     });
+
+    it('does not allow invalid times', () => {
+      const prevState = {
+        workTime: 60,
+        timeLeft: 60,
+      };
+
+      const newState = {
+      };
+
+      expect(clickDecreaseWorkTime(prevState)).toEqual(newState);
+    });
   });
 
   describe('clickIncreaseWorkTime', () => {
@@ -91,6 +103,17 @@ describe('actions', () => {
 
       const newState = {
         breakTime: 60,
+      };
+
+      expect(clickDecreaseBreakTime(prevState)).toEqual(newState);
+    });
+
+    it('does not allow invalid times', () => {
+      const prevState = {
+        breakTime: 60,
+      };
+
+      const newState = {
       };
 
       expect(clickDecreaseBreakTime(prevState)).toEqual(newState);
