@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Timer from './Timer';
 import Button from './Button';
+import Status from './Status';
 import EditableTimer from './EditableTimer';
 
 import {
@@ -90,7 +91,7 @@ class Pomodoro extends Component {
           timeLeft={timeLeft}
           onClick={this.handleClickTimer}
         />
-        <h2 className="Pomodoro-mode">It is {status} time</h2>
+        <Status status={status} />
         <Button
           label="Reset"
           className="Pomodoro-resetButton"
