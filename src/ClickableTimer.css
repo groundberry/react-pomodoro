@@ -1,15 +1,53 @@
 .ClickableTimer {
-  background-color: red;
-  border-color: #000;
+  margin-top: 100px;
+  position: relative;
+}
+
+.ClickableTimer-leaf::before {
+  color: green;
+  content: '(';
+  font-size: 60px;
+  font-weight: bold;
+  left: 6px;
+  position: absolute;
+  right: 0;
+  top: -38px;
+  z-index: -1;
+}
+
+.ClickableTimer-tomato {
+  background-color: transparent;
   border-radius: 100%;
-  border-style: solid;
+  border-style: none;
   color: #000;
   cursor: pointer;
   font-size: 2em;
   height: 200px;
+  position: relative;
   width: 200px;
 }
 
-.ClickableTimer:hover {
-  background-color: green;
+.ClickableTimer-tomato::before,
+.ClickableTimer-tomato::after {
+  background-color: #bd2222;
+  border-radius: 100%;
+  content: '';
+  height: 200px;
+  position: absolute;
+  top: 0;
+  width: 200px;
+  z-index: -1;
+}
+
+.ClickableTimer-tomato:hover::before,
+.ClickableTimer-tomato:hover::after {
+  background-color: #ad0202;
+}
+
+.ClickableTimer-tomato::before {
+  left: -35px;
+}
+
+.ClickableTimer-tomato::after {
+  right: -35px;
 }

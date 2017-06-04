@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import App from './App';
 
 describe('<App />', () => {
-  it('renders a header', () => {
+  it('sets the class name', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find('h1.App-header').text()).toBe('Pomodoro clock');
+    expect(wrapper.hasClass('App')).toBe(true);
   });
 });

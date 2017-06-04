@@ -21,7 +21,7 @@ describe('<ClickableTimer />', () => {
   });
 
   it('invokes the callback when clicked', () => {
-    wrapper.simulate('click');
+    wrapper.find('.ClickableTimer-tomato').simulate('click');
     expect(spy).toBeCalled();
   });
 });

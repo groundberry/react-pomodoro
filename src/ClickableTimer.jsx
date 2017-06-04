@@ -5,9 +5,12 @@ import './ClickableTimer.css';
 
 export default function ClickableTimer(props) {
   return (
-    <button className="ClickableTimer" onClick={props.onClick}>
-      <Time time={props.timeLeft} />
-    </button>
+    <div className="ClickableTimer">
+      <span className="ClickableTimer-leaf" />
+      <button className="ClickableTimer-tomato" onClick={props.onClick}>
+        <Time time={props.timeLeft} />
+      </button>
+    </div>
   );
 }
 
