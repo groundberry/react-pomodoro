@@ -1,6 +1,12 @@
 .ClickableTimer {
-  margin-top: 100px;
+  margin-top: 50px;
   position: relative;
+}
+
+@media (min-width: 480px) {
+  .ClickableTimer {
+    margin-top: 100px;
+  }
 }
 
 .ClickableTimer-leaf::before {
